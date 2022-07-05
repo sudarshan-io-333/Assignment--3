@@ -1,0 +1,235 @@
+ <!-- <div class="container">
+  <h1>Assignment -3 </h1>
+  <hr>
+  <form #compressionForm="ngForm" (ngSubmit)="submitData(compressionForm.value)">
+    <div class="row">
+      <div class="col-lg-6">
+        <input type="number" required #csFirst="ngModel" name="csFirst" placeholder="CS 25%" ngModel />
+        <span *ngIf="csFirst.invalid && csFirst.touched" class="ml-3" style="color: red;">please enter data</span>
+      </div>
+      <div class="col-lg-6">
+        <input type="number" required #csSecond="ngModel" name="csSecond" placeholder="CS 65%" ngModel />
+        <span *ngIf="csSecond.invalid && csSecond.touched" class="ml-3" style="color: red;">please enter data</span>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <label>Compression Test:</label>
+    </div>
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-4">Values</th>
+            <th class="col-4">Before</th>
+            <th class="col-4">After</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Test # 1</th>
+            <td>
+              <input type="number" id="test1b" #test1bf="ngModel" placeholder="0" name="test1bf" ngModel
+                (ngModelChange)="changeVal($event,test1bf)" />
+            </td>
+            <td>
+              <input type="number" name="test1af">
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Test # 2</th>
+            <td>
+              <input type="number" id="test2b" #test2bf="ngModel" placeholder="0" name="test2bf" ngModel (ngModelChange)="changeVal($event,test2bf)" />
+            </td>
+            <td>
+              <input type="number" name="test2af">
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Test # 3</th>
+            <td>
+              <input type="number" id="test3b" #test3bf="ngModel" placeholder="0" name="test3bf" ngModel (ngModelChange)="changeVal($event,test3bf)" />
+            </td>
+            <td>
+              <input type="number" name="test3af">
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Test # 4</th>
+            <td>
+              <input type="number" id="test4b" #test4bf="ngModel" placeholder="0" name="test4bf" ngModel (ngModelChange)="changeVal($event,test4bf)" />
+            </td>
+            <td>
+              <input type="number" name="test4af">
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Average</th>
+            <td >
+              <input type="" #averagebf="ngModel" name="averagebf"
+                [value]="(test1bf.value + test2bf.value+ test3bf.value + test4bf.value)/count" ngModel disabled />
+            </td>
+            <td>
+              <input type="number" name="avgAf" #averageaf="ngModel" disabled ngModel>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Compression Set AVG:</th>
+            <td>
+              <input type="number" name="cAvgBf" [value]="(averagebf.value + averageaf.value)/ averageaf.value" ngModel
+                disabled>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="submit" class="bg-primary" [disabled]="compressionForm.invalid">Submit</button>
+  </form>
+</div> -->
+
+<app-reactive-ass></app-reactive-ass> 
+
+<!--  -->
+
+
+
+
+<!-- <div class="container">
+  <form #signform="ngForm" (ngSubmit)="info(signform.value)">
+    <div class="row mt-3">
+      <h3>Compressive Strength</h3>
+      <div class="col-sm-6">
+        <mat-form-field appearance="outline"> 
+          <mat-label>CS 25%</mat-label>
+          <input type="number" required matInput name="s1" #s1="ngModel" ngModel placeholder="0" />
+         </mat-form-field> 
+        <span *ngIf="s1.invalid && s1.touched" class="error">Field is required</span>
+      </div>
+      <div class="col-sm-6">
+        <mat-form-field appearance="outline"> 
+           <mat-label>CS 65%</mat-label>
+          <input type="number" required matInput name="s2" #s2="ngModel" ngModel placeholder="0" />
+        </mat-form-field>
+        <span *ngIf="s2.invalid && s2.touched" class="error">Field is required</span>
+      </div>
+    </div>
+
+    <div class="row mt-3 border-bottom">
+      <h3>Compressive Test</h3>
+      <div class="col-sm-2">
+        <h5 class="font-weight-bold">Values</h5>
+      </div>
+      <div class="col-sm-5">
+        <h5 class="font-weight-bold">Before</h5>
+      </div>
+      <div class="col-sm-5">
+        <h5 class="font-weight-bold">After</h5>
+      </div>
+    </div>
+
+    <div class="row mt-3 g-2">
+      <div class="col-sm-2">
+        <h5 class="font-weight-bold mt-3">Test #1</h5>
+      </div>
+      <div class="col-sm-5">
+        <mat-form-field appearance="outline">
+          <input [(ngModel)]="test1" name="test1" type="number" #input="ngModel"
+            (ngModelChange)="beforechange($event, 'test1')" matInput placeholder="0" />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-5">
+        <mat-form-field appearance="outline">
+          <input [(ngModel)]="test1A" name="test1A" type="number" #input (ngModelChange)="afterchange($event, 'test1A')"
+            matInput placeholder="0" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row g-2">
+      <div class="col-sm-2">
+        <h5 class="font-weight-bold mt-3">Test #2</h5>
+      </div>
+      <div class="col-sm-5">
+        <mat-form-field appearance="outline">
+          <input [(ngModel)]="test2" name="test2" type="number" #input (ngModelChange)="beforechange($event, 'test2')"
+            matInput placeholder="0" />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-5">
+        <mat-form-field appearance="outline">
+          <input [(ngModel)]="test1B" name="test1B" type="number" #input (ngModelChange)="afterchange($event, 'test1B')"
+            matInput placeholder="0" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row g-2">
+      <div class="col-sm-2">
+        <h5 class="font-weight-bold mt-3">Test #3</h5>
+      </div>
+      <div class="col-sm-5">
+        <mat-form-field appearance="outline">
+          <input [(ngModel)]="test3" name="test3" type="number" #input (ngModelChange)="beforechange($event, 'test3')"
+            matInput placeholder="0" />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-5">
+        <mat-form-field appearance="outline">
+          <input [(ngModel)]="test1C" name="test1C" type="number" #input (ngModelChange)="afterchange($event, 'test1C')"
+            matInput placeholder="0" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row g-2">
+      <div class="col-sm-2">
+        <h5 class="font-weight-bold mt-3">Test #4</h5>
+      </div>
+      <div class="col-sm-5">
+        <mat-form-field appearance="outline">
+          <input [(ngModel)]="test4" name="test4" type="number" #input (ngModelChange)="beforechange($event, 'test4')"
+            matInput placeholder="0" />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-5">
+        <mat-form-field appearance="outline">
+          <input [(ngModel)]="test1D" name="test1D" type="number" #input (ngModelChange)="afterchange($event, 'test1D')"
+            matInput placeholder="0" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row g-2">
+      <div class="col-sm-2">
+        <h5 class="font-weight-bold mt-3">Avarage</h5>
+      </div>
+      <div class="col-sm-5">
+        <mat-form-field appearance="outline">
+          <input [(ngModel)]="avg1" name="avg1" min="1" type="number" #input readonly [value]="avg1" matInput
+            placeholder="0" />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-5">
+        <mat-form-field appearance="outline">
+          <input [(ngModel)]="avg2" name="avg2" min="1" type="number" #input readonly [value]="avg2" matInput
+            placeholder="0" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row g-2">
+      <div class="col-sm-2">
+        <h5 class="font-weight-bold mt-3">Compression Set AVG</h5>
+      </div>
+      <div class="col-sm-5">
+        <mat-form-field appearance="outline">
+          <input [(ngModel)]="com_avg" min="1" name="com_avg" #input type="number" readonly [value]="com_avg" matInput
+            placeholder="0" />
+          <mat-icon matSuffix>%</mat-icon>
+        </mat-form-field>
+
+      </div>
+      <div class="col-sm-5">
+        <button type="submit" [disabled]="signform.invalid" style="margin-left: 8px" mat-raised-button color="primary">
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div> -->

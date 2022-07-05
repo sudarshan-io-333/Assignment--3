@@ -1,0 +1,35 @@
+<div class="container">
+    <h1>Activator Master Card </h1>
+    <hr>
+    <form [formGroup]="activatorMasterForm" (ngSubmit)="postData()">
+        <div class="row">
+            <div class="col-lg-3">
+                <input type="date" class="form-control" placeholder="date" formControlName="dateCtrl" />
+                <!-- <span *ngIf="activatorMasterForm.get('dateCtrl').touched && activatorMasterForm.get('dateCtrl').hasError('required')">Required</span> -->
+            </div>
+            <div class="col-lg-3">
+                <input type="text" placeholder="type" formControlName="typeCtrl" />
+                <span *ngIf="activatorMasterForm.get('typeCtrl')invalid">Required</span>
+            </div>
+            <div class="col-lg-3">
+                <input type="number" placeholder="number" />
+            </div>
+            <div class="col-lg-3">
+                <input type="number" placeholder="Total Parts by weight" />
+            </div>
+        </div><br>
+        <div class="form-group-row">
+            <div class="col-md-4" formArrayName="items">
+                <div>
+                <input type="number" class="formControl" formControlName="itemNumber" placeholder="Item number" />
+           
+            <!-- <div class="col-md-4"> -->
+                <input type="number" class="formControl" formControlName="partsByWeight" placeholder="Parts by weight" />
+            <!-- </div> -->
+            <button type="button" class="bg-primary" (click)="addNewItem()">Add</button>
+        </div>
+        </div>
+        </div>
+
+    </form>
+</div>
